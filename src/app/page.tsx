@@ -10,6 +10,14 @@ type Settings = Record<string, any>
 
 export default async function Home() {
   const data: Settings = await client.fetch(query)
+  const fixedNav = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Packages", href: "#packages" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Contact", href: "#contact" },
+  ]
 
   return (
     <main>
@@ -23,7 +31,7 @@ export default async function Home() {
             </div>
           </div>
           <nav>
-            {(data?.navItems || []).map((item: any) => (
+            {fixedNav.map((item) => (
               <a key={item.label} href={item.href}>{item.label}</a>
             ))}
           </nav>
