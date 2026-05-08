@@ -10,6 +10,8 @@ type Settings = Record<string, any>
 
 export default async function Home() {
   const data: Settings = await client.fetch(query)
+  const contactEmail = "nishantdobhal@gmail.com"
+  const linkedinUrl = "https://www.linkedin.com/in/nishant-dobhal-652222366"
   const fixedNav = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
@@ -142,11 +144,15 @@ export default async function Home() {
             </article>
             <article className="contactInfoCard">
               <h4>Email</h4>
-              <p>{data?.contact?.email}</p>
+              <p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
             </article>
             <article className="contactInfoCard">
               <h4>Location</h4>
               <p>{data?.contact?.address}</p>
+            </article>
+            <article className="contactInfoCard">
+              <h4>LinkedIn</h4>
+              <p><a href={linkedinUrl} target="_blank" rel="noreferrer">{linkedinUrl}</a></p>
             </article>
           </div>
         </div>
