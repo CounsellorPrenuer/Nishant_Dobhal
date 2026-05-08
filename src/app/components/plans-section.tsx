@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 type Plan = {
   audience: string;
@@ -16,6 +18,7 @@ type CustomPlan = {
   title: string;
   price: string;
   description: string;
+  image?: any;
   ctaLabel?: string;
 };
 
@@ -109,6 +112,15 @@ export function PlansSection({
           <div className="grid customGrid">
             {(customPlans || []).map((item) => (
               <article key={item.title} className="customCard">
+                {item.image && (
+                  <Image
+                    src={urlFor(item.image).width(240).height(240).url()}
+                    alt={item.title}
+                    width={96}
+                    height={96}
+                    className="customPlanImage"
+                  />
+                )}
                 <div>
                   <h3>{item.title}</h3>
                   <h4>{item.price}</h4>
